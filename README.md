@@ -9,6 +9,9 @@ Work in progress. ONLY works with Windowed mode. Does not hook into the DX at al
 bufferedPanel._programFocus should be set to 'true' for it to function, it currently is not. (WIP for detecting program opening/closing)
 
 // TODO: Detect if game closes or is closed, wait for it to open!
+
 // TODO: Hide if Elite Dangerous is NOT the active window!!!
+
 // TODO: Hotkey to hide the crosshair
+
 // TODO: Crosshair styles!
