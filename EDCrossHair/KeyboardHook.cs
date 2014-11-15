@@ -6,9 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace EDCrossHair
 {
-    
+    // Special thanks to Christian Liensberger for this class
+    // http://www.liensberger.it/web/blog/?p=207
     public sealed class KeyboardHook : IDisposable
     {
         // Registers a hot key with Windows.
