@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.bufferedPanel = new EDCrossHair.BufferedPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bufferedPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // bufferedPanel
@@ -39,22 +37,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bufferedPanel.AutoSize = true;
-            this.bufferedPanel.Controls.Add(this.label1);
             this.bufferedPanel.Location = new System.Drawing.Point(0, 0);
             this.bufferedPanel.Margin = new System.Windows.Forms.Padding(0);
             this.bufferedPanel.Name = "bufferedPanel";
+            this.bufferedPanel.programFocus = false;
             this.bufferedPanel.Size = new System.Drawing.Size(210, 127);
             this.bufferedPanel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(31, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.bufferedPanel.xDraw = 0;
+            this.bufferedPanel.yDraw = 0;
             // 
             // Form1
             // 
@@ -69,8 +59,6 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Black;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.bufferedPanel.ResumeLayout(false);
-            this.bufferedPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,7 +67,6 @@
         #endregion
 
         private BufferedPanel bufferedPanel;
-        private System.Windows.Forms.Label label1;
     }
 }
 
