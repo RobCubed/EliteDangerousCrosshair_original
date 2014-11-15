@@ -1,8 +1,8 @@
-EliteDangerousCrosshair
+EliteDangerousCrosshair 1.0.0.0
 =======================
 
-Crosshair for Elite Dangerous to assist with piloting in Frameshift Mode
 
+Crosshair for Elite Dangerous to assist with piloting in Frameshift Mode
 
 Work in progress. ONLY works with Windowed mode. Does not hook into the DX at all, simply overlays a transparent click-through frame over your entire screen, and detects the location of the game window.
 
