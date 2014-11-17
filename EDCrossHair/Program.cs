@@ -14,6 +14,7 @@ namespace EDCrossHair
         [STAThread]
         static void Main()
         {
+            Console.Title = "EliteDangerousCrosshair v1.0.1";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

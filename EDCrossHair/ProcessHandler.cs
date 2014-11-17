@@ -70,7 +70,7 @@ namespace EDCrossHair
             Process p = processes[0];
             return p.MainWindowHandle;
         }
-
+        
         internal static bool IsForeground(IntPtr ptr)
         {
             IntPtr hwnd = ProcessHandler.GetForegroundWindow();

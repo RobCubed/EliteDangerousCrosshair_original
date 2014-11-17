@@ -13,7 +13,6 @@ namespace EDCrossHair
         private Graphics g;
         private static Rectangle rEllipse;
         private static Pen outline;
-        //public static int xDraw = 0;
         public int _yDraw = 0;
         public int yDraw
         {
@@ -39,6 +38,34 @@ namespace EDCrossHair
                     this.Invalidate();
                 }
                 _xDraw = value;
+            }
+        }
+
+        public int _yScreen = 0;
+        public int yScreen
+        {
+            get { return _yScreen; }
+            set
+            {
+                if (_yScreen != value)
+                {
+                    _yScreen = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private int _xScreen = 0;
+        public int xScreen
+        {
+            get { return _xScreen; }
+            set
+            {
+                if (_xScreen != value)
+                {
+                    this.Invalidate();
+                }
+                _xScreen = value;
             }
         }
 
@@ -73,8 +100,10 @@ namespace EDCrossHair
                 rEllipse = new Rectangle();
                 rEllipse.Width = 50;
                 rEllipse.Height = 50;
-                rEllipse.X = xDraw - (rEllipse.Width / 2);
-                rEllipse.Y = yDraw - (rEllipse.Height / 2);
+                this.Width = xScreen;
+                this.Height = yScreen;
+                rEllipse.X = (xScreen / 2) - (rEllipse.Width / 2);
+                rEllipse.Y = (yScreen / 2) - (rEllipse.Height / 2);
 
                 g.DrawEllipse(outline, rEllipse);
 

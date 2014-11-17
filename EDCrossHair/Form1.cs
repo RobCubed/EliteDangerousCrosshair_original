@@ -21,23 +21,54 @@ namespace EDCrossHair
     {
         KeyboardHook hook = new KeyboardHook();
         private bool activate;
+        BackgroundWorker locationUpdate;
+        int finalLocX;
+        int finalLocY;
+        int x;
+        int y;
 
         public Form1()
-        {            
-            //Console.WriteLine(lol.MainWindowTitle);
+        {
             InitializeComponent();
+            locationUpdate = new BackgroundWorker();
             activate = true;
+
 
             hook.KeyPressed +=
                 new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
-            // register the control + alt + F12 combination as hot key.
+            // register the control + shift + F12 combination as hot key.
             hook.RegisterHotKey((ModifierKeys)2 | (ModifierKeys)4, Keys.F1);
+            locationUpdate.DoWork += new DoWorkEventHandler(_DoWork);
+           
 
             Thread thread = new Thread(new ThreadStart(RunPaint));
             thread.Start();
+
+            bufferedPanel.BorderStyle = BorderStyle.None;
+
         }
 
-        
+        void _DoWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+        }
+
+        void _DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    this.DesktopLocation = new Point(finalLocX, finalLocY);
+                    this.Width = x * 2;
+                    this.Height = y * 2;
+                }));
+            }
+            else
+            {
+                this.DesktopLocation = new Point(finalLocX, finalLocY);
+            }
+
+        }
 
         void hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
@@ -56,8 +87,9 @@ namespace EDCrossHair
 
         private void RunPaint()
         {
-            Console.WriteLine("Welcome to EliteDangerousCrosshair by RobCubed!");
+            Console.WriteLine("Welcome to EliteDangerousCrosshair v1.0.1 by RobCubed!");
             Console.WriteLine("http://www.github.com/RobCubed");
+            Console.WriteLine("* * * Now works on multi-screens/any screen! * * *");
             Console.WriteLine("Remember, Elite Dangerous *must* be in windowed mode for this to function.");
             Console.WriteLine("CTRL+SHIFT+F1 will enable/disable the crosshairs.");
             Console.WriteLine("--------------------------------------------");
@@ -65,12 +97,11 @@ namespace EDCrossHair
             IntPtr ptr = ProcessHandler.WaitForProcessByName(gameName);
             EDCrossHair.ProcessHandler.RECT clientRect = ProcessHandler.GetRect(ptr);
             
-            int x;
-            int y;
+            
             bool coordinatesFound;
             int newPointX;
             int newPointY;
-            
+
 
             while (true)
             {
@@ -93,9 +124,19 @@ namespace EDCrossHair
                     y = clientRect.Height / 2;
                     coordinatesFound = false;
 
+
                     point = new Point();
 
                     coordinatesFound = ProcessHandler.ClientToScreen(ptr, ref point);
+
+                    finalLocX = point.X;
+                    finalLocY = point.Y;
+
+                    if (!locationUpdate.IsBusy)
+                    {
+                        locationUpdate.RunWorkerAsync();
+                    }
+
 
                     newPointX = point.X + x;
                     newPointY = point.Y + y;
@@ -106,6 +147,8 @@ namespace EDCrossHair
                     {
                         bufferedPanel.xDraw = newPointX;
                         bufferedPanel.yDraw = newPointY;
+                        bufferedPanel.xScreen = clientRect.Width;
+                        bufferedPanel.yScreen = clientRect.Height;
                     }
                 }
                 else

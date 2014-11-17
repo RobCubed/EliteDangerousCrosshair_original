@@ -37,28 +37,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bufferedPanel.AutoSize = true;
+            this.bufferedPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bufferedPanel.Location = new System.Drawing.Point(0, 0);
             this.bufferedPanel.Margin = new System.Windows.Forms.Padding(0);
             this.bufferedPanel.Name = "bufferedPanel";
             this.bufferedPanel.programFocus = false;
-            this.bufferedPanel.Size = new System.Drawing.Size(210, 127);
+            this.bufferedPanel.Size = new System.Drawing.Size(2, 2);
             this.bufferedPanel.TabIndex = 0;
             this.bufferedPanel.xDraw = 0;
+            this.bufferedPanel.xScreen = 0;
             this.bufferedPanel.yDraw = 0;
+            this.bufferedPanel.yScreen = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(1, 1);
             this.Controls.Add(this.bufferedPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Black;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
