@@ -1,5 +1,11 @@
-EliteDangerousCrosshair 1.0.0.0
+EliteDangerousCrosshair 1.0.1
 =======================
+
+Changes 1.0.1: Now works in any window/screen. Modified the window to only overlay the actual application instead of the entire desktop.
+
+=======================
+
+Download by clicking the "Releases" button above!
 
 
 Crosshair for Elite Dangerous to assist with piloting in Frameshift Mode
