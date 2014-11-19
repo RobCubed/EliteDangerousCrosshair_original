@@ -1,6 +1,12 @@
 EliteDangerousCrosshair 1.0.1
 =======================
 
+This project has been rewritten to deal with several issues, most notably a frame drop. Please find the new project at https://github.com/RobCubed/EliteDangerousCrosshair
+
+
+
+=======================
+
 Changes 1.0.1: Now works in any window/screen. Modified the window to only overlay the actual application instead of the entire desktop.
 
 =======================
